@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolão Tropa do Ideia 2026 - 2º Turno (Lula x Flávio)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ideia: {
+                            navy: '#031226',
+                            darkBlue: '#0A1D37',
+                            cardBlue: '#0F274A',
+                            cyan: '#0091FF',
+                            cyanHover: '#0070C8',
+                            lula: '#E53935',
+                            flavio: '#1565C0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #031226;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 145, 255, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 145, 255, 0.06) 0%, transparent 25%);
+        }
+
+        /* Destaque estilo Ideia (bloco azul com texto branco) */
+        .ideia-highlight {
+            background-color: #0091FF;
+            color: #FFFFFF;
+            padding: 2px 10px;
+            display: inline-block;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Animações e transições */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        
+        input[type=range]:focus {
+            outline: none;
+        }
+        
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 145, 255, 0.8), 0 2px 6px rgba(0,0,0,0.4);
+            border: 3px solid #0091FF;
+            margin-top: -10px;
+            transition: transform 0.1s ease;
+        }
+
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            background: linear-gradient(to right, #E53935 var(--lula-pct, 50%), #1565C0 var(--lula-pct, 50%));
+        }
+
+        /* Efeito de carimbo */
+        .stamp-badge {
+            border: 3px dashed #0091FF;
+            color: #0091FF;
+            transform: rotate(-5deg);
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-ideia-cyan selection:text-white">
+
+    <!-- HEADER COM NOVO LOGOTIPO EXCLUSIVO "TROPA DO IDEIA" -->
+    <header class="border-b border-white/10 bg-ideia-darkBlue/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- LOGO EXCLUSIVO TROPA DO IDEIA -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.location.reload()">
+                <div class="w-11 h-11 rounded-xl bg-ideia-cyan/10 border border-ideia-cyan/30 flex items-center justify-center text-ideia-cyan shadow-lg shadow-ideia-cyan/20">
+                    <i class="fa-solid fa-users-viewfinder text-xl"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-black tracking-wider text-white uppercase leading-none">Tropa do</span>
+                    <span class="text-2xl font-black tracking-tight text-ideia-cyan leading-none mt-1">Ideia</span>
+                </div>
+            </div>
+
+            <!-- BADGE DE ANO -->
+            <div class="flex items-center px-3.5 py-1.5 rounded-full bg-ideia-cyan/10 border border-ideia-cyan/30 text-ideia-cyan text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-flag-checkered mr-2"></i> Eleições 2026
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
+
+        <!-- BANNER DE TÍTULO PRINCIPAL -->
+        <div class="text-center mb-10 space-y-3">
+            <div class="inline-block mb-2">
+                <span class="ideia-highlight text-lg sm:text-2xl">PESQUISA DA TROPA DO IDEIA</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                Bolão <span class="text-ideia-cyan">Eleições 2026</span>
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+                2º Turno: <strong class="text-white">Lula vs. Flávio Bolsonaro</strong>. Registre seu palpite corporativo e descubra a média da empresa!
+            </p>
+        </div>
+
+        <!-- TELA 1: AUTENTICAÇÃO POR SENHA -->
+        <section id="screen-login" class="fade-in max-w-md mx-auto">
+            <div class="bg-ideia-darkBlue border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mr-6 -mt-6 w-24 h-24 bg-ideia-cyan/10 rounded-full blur-xl pointer-events-none"></div>
+                
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-ideia-cyan/10 text-ideia-cyan rounded-full flex items-center justify-center mx-auto mb-4 border border-ideia-cyan/30">
+                        <i class="fa-solid fa-lock text-2xl"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Acesso Restrito</h2>
+                    <p class="text-xs text-slate-400 mt-1">Digite a senha da galera da empresa para continuar.</p>
+                </div>
+
+                <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Senha do Sistema</label>
+                        <div class="relative">
+                            <input 
+                                type="password" 
+                                id="password-input" 
+                                placeholder="Digite aqui..." 
+                                class="w-full bg-ideia-navy/80 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-ideia-cyan focus:ring-1 focus:ring-ideia-cyan transition"
+                                required
+                            >
+                            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3.5 text-slate-400 hover:text-white">
+                                <i id="eye-icon" class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mensagem de Erro Divertida -->
+                    <div id="login-error" class="hidden p-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-xs text-center font-medium leading-relaxed">
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-ideia-cyan hover:bg-ideia-cyanHover text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-ideia-cyan/25 transition duration-200 flex items-center justify-center gap-2 text-sm uppercase tracking-wider"
+                    >
+                        <span>Entrar no Sistema</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- TELA INTERMEDIÁRIA: ESCOLHA (APÓS A SENHA) -->
+        <section id="screen-choice" class="hidden fade-in max-w-xl mx-auto">
+            <div class="bg-ideia-darkBlue border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl text-center space-y-6">
+                <div class="w-16 h-16 bg-ideia-cyan/10 text-ideia-cyan rounded-full flex items-center justify-center mx-auto border border-ideia-cyan/30">
+                    <i class="fa-solid fa-compass text-2xl"></i>
+                </div>
+                
+                <div>
+                    <h2 class="text-2xl font-black">Senha Aceita! 🚀</h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">O que você deseja fazer agora?</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <!-- Opção 1: Quero apostar -->
+                    <button onclick="goToVoteScreen()" class="p-5 bg-ideia-navy/80 hover:bg-ideia-cyan/20 border border-white/10 hover:border-ideia-cyan rounded-xl text-left transition duration-200 group flex flex-col justify-between space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-ideia-cyan/10 text-ideia-cyan flex items-center justify-center group-hover:scale-110 transition">
+                            <i class="fa-solid fa-pen-to-square text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white text-sm">Quero dar meu palpite</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">Ainda não votei ou quero registrar minha projeção.</div>
+                        </div>
+                    </button>
+
+                    <!-- Opção 2: Já apostei, ver ranking -->
+                    <button onclick="goToRankingScreen()" class="p-5 bg-ideia-navy/80 hover:bg-ideia-cyan/20 border border-white/10 hover:border-ideia-cyan rounded-xl text-left transition duration-200 group flex flex-col justify-between space-y-3">
+                        <div class="w-10 h-10 rounded-lg bg-ideia-cyan/10 text-ideia-cyan flex items-center justify-center group-hover:scale-110 transition">
+                            <i class="fa-solid fa-trophy text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-white text-sm">Já apostei</div>
+                            <div class="text-[11px] text-slate-400 mt-0.5">Quero ver o placar, o ranking e a média da empresa.</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TELA 2: FORMULÁRIO DE PALPITE -->
+        <section id="screen-vote" class="hidden fade-in max-w-2xl mx-auto">
+            <div class="bg-ideia-darkBlue border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+                
+                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                    <div>
+                        <span class="text-xs font-bold text-ideia-cyan uppercase tracking-widest">Passo 1 de 2</span>
+                        <h2 class="text-2xl font-black">Registre seu Palpite</h2>
+                    </div>
+                    <button onclick="backToChoice()" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </button>
+                </div>
+
+                <form id="form-bet" onsubmit="handleBetSubmit(event)" class="space-y-6">
+                    <!-- Nome do Apostador -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Seu Nome / Apelido no Trabalho</label>
+                        <input 
+                            type="text" 
+                            id="user-name" 
+                            placeholder="Ex: João do BI, Aninha do Marketing..." 
+                            class="w-full bg-ideia-navy/80 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-ideia-cyan focus:ring-1 focus:ring-ideia-cyan transition"
+                            required
+                        >
+                    </div>
+
+                    <!-- SLIDER LULA X FLÁVIO -->
+                    <div class="bg-ideia-navy/60 p-5 rounded-2xl border border-white/10 space-y-6">
+                        <div class="text-center">
+                            <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Projeção de Votos Válidos (%)</span>
+                            <h3 class="text-lg font-bold text-slate-200 mt-1">Ajuste a porcentagem do 2º Turno:</h3>
+                        </div>
+
+                        <!-- CARDS CANDIDATOS COMPARATIVO -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <!-- Lula Card -->
+                            <div class="bg-ideia-lula/10 border border-ideia-lula/40 rounded-xl p-4 text-center relative overflow-hidden">
+                                <div class="text-xs font-bold text-ideia-lula uppercase tracking-wider mb-1">LULA</div>
+                                <div class="text-3xl sm:text-4xl font-black text-white" id="lula-percent-display">50%</div>
+                                <div class="text-[10px] text-slate-400 mt-1">PT / Frente Ampla</div>
+                            </div>
+
+                            <!-- Flávio Card -->
+                            <div class="bg-ideia-flavio/10 border border-ideia-flavio/40 rounded-xl p-4 text-center relative overflow-hidden">
+                                <div class="text-xs font-bold text-ideia-flavio uppercase tracking-wider mb-1">FLÁVIO BOLSONARO</div>
+                                <div class="text-3xl sm:text-4xl font-black text-white" id="flavio-percent-display">50%</div>
+                                <div class="text-[10px] text-slate-400 mt-1">PL / Oposição</div>
+                            </div>
+                        </div>
+
+                        <!-- Slider Único -->
+                        <div class="space-y-2 pt-2">
+                            <input 
+                                type="range" 
+                                id="vote-slider" 
+                                min="0" 
+                                max="100" 
+                                value="50" 
+                                step="0.5"
+                                oninput="updateSliderValues(this.value)"
+                            >
+                            <div class="flex justify-between text-[11px] font-bold text-slate-400 px-1">
+                                <span class="text-ideia-lula">← 100% Lula</span>
+                                <span>50% / 50%</span>
+                                <span class="text-ideia-flavio">100% Flávio →</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diagnóstico Político Cômico Dinâmico -->
+                    <div class="p-4 bg-ideia-cardBlue rounded-xl border border-ideia-cyan/30 flex items-start gap-3">
+                        <span class="text-xl">📊</span>
+                        <div>
+                            <div class="text-xs font-bold text-ideia-cyan uppercase">Diagnóstico do DataIdeia</div>
+                            <p id="funny-diagnosis" class="text-xs text-slate-300 mt-0.5 italic">
+                                "Equilíbrio absoluto! Você confia 100% na margem de erro ou só quer evitar brigas na hora do almoço?"
+                            </p>
+                        </div>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        class="w-full bg-ideia-cyan hover:bg-ideia-cyanHover text-white font-black py-4 px-6 rounded-xl shadow-lg shadow-ideia-cyan/25 transition duration-200 flex items-center justify-center gap-2 text-sm uppercase tracking-wider"
+                    >
+                        <i class="fa-solid fa-check-circle text-lg"></i>
+                        <span>Confirmar e Revelar Ranking da Tropa</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- TELA 3: RANKING & PLACAR DA EMPRESA -->
+        <section id="screen-ranking" class="hidden fade-in space-y-8">
+            
+            <div class="flex items-center justify-between">
+                <button onclick="backToChoice()" class="text-xs text-slate-400 hover:text-white flex items-center gap-1.5 bg-ideia-darkBlue border border-white/10 px-3 py-2 rounded-xl transition">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar ao Menu
+                </button>
+                <div class="stamp-badge px-4 py-1.5 rounded-lg text-center bg-ideia-navy/80">
+                    <div class="text-[9px]">CERTIFICADO OFICIAL</div>
+                    <div class="text-xs">TROPA DO IDEIA</div>
+                </div>
+            </div>
+
+            <!-- MÉDIA GERAL DA EMPRESA -->
+            <div class="bg-ideia-darkBlue border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
+                    <div>
+                        <span class="ideia-highlight text-xs mb-1">MÉDIA GERAL DA EMPRESA</span>
+                        <h3 class="text-2xl font-black">Consenso da Tropa do Ideia</h3>
+                    </div>
+                    <div class="text-xs text-slate-400 flex items-center gap-1.5">
+                        <i class="fa-solid fa-users text-ideia-cyan"></i>
+                        <span id="total-bets-count">0</span> palpites computados
+                    </div>
+                </div>
+
+                <!-- CARDS DA MÉDIA -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-ideia-lula/10 border border-ideia-lula/30 p-4 rounded-xl text-center">
+                        <span class="text-xs font-bold text-ideia-lula">MÉDIA LULA</span>
+                        <div class="text-3xl sm:text-5xl font-black text-white my-1" id="avg-lula">0%</div>
+                        <span class="text-[10px] text-slate-400">no 2º Turno</span>
+                    </div>
+
+                    <div class="bg-ideia-flavio/10 border border-ideia-flavio/30 p-4 rounded-xl text-center">
+                        <span class="text-xs font-bold text-ideia-flavio">MÉDIA FLÁVIO</span>
+                        <div class="text-3xl sm:text-5xl font-black text-white my-1" id="avg-flavio">0%</div>
+                        <span class="text-[10px] text-slate-400">no 2º Turno</span>
+                    </div>
+                </div>
+
+                <!-- BARRA DE PROGRESSO COMPARATIVA DA MÉDIA -->
+                <div class="space-y-2">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-ideia-lula flex items-center gap-1"><i class="fa-solid fa-square"></i> Lula</span>
+                        <span class="text-ideia-flavio flex items-center gap-1">Flávio <i class="fa-solid fa-square"></i></span>
+                    </div>
+                    <div class="w-full h-6 bg-slate-900 rounded-xl overflow-hidden flex border border-white/15 p-1">
+                        <div id="avg-bar-lula" class="h-full bg-ideia-lula rounded-l-lg transition-all duration-500 flex items-center justify-center text-[10px] font-bold" style="width: 50%;"></div>
+                        <div id="avg-bar-flavio" class="h-full bg-ideia-flavio rounded-r-lg transition-all duration-500 flex items-center justify-center text-[10px] font-bold" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABELA DO RANKING DE PALPITES -->
+            <div class="bg-ideia-darkBlue border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                    <h3 class="text-xl font-extrabold flex items-center gap-2">
+                        <i class="fa-solid fa-list-ol text-ideia-cyan"></i>
+                        <span>Todas as Apostas Registradas</span>
+                    </h3>
+                </div>
+
+                <!-- TABELA RESPONSIVA -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-300">
+                        <thead class="bg-ideia-navy/80 text-[11px] uppercase tracking-wider text-slate-400 border-b border-white/10">
+                            <tr>
+                                <th class="p-3">Apostador(a)</th>
+                                <th class="p-3 text-center">Lula (%)</th>
+                                <th class="p-3 text-center">Flávio (%)</th>
+                                <th class="p-3 text-right">Projeção</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-table-body" class="divide-y divide-white/5">
+                            <!-- Preenchido via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 bg-ideia-darkBlue/50 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p>© 2026 Tropa do Ideia — Brincadeira interna sem fins eleitorais oficiais.</p>
+            <p class="text-[10px] text-slate-600">Inspirado na identidade visual da Ideia. Mantenha o clima leve no café!</p>
+        </div>
+    </footer>
+
+    <!-- LOGIC JAVASCRIPT -->
+    <script>
+        // MOCK INITIAL DATA
+        const initialMockBets = [
+            { name: "Chefe do Cafezinho ☕", lula: 52.5, flavio: 47.5, date: "16/10 10:15" },
+            { name: "Estagiário de Políticagem", lula: 48.0, flavio: 52.0, date: "16/10 11:30" },
+            { name: "Analista Sênior do Excel", lula: 50.8, flavio: 49.2, date: "16/10 12:05" },
+            { name: "Dev da Madrugada 💻", lula: 51.5, flavio: 48.5, date: "16/10 13:40" },
+            { name: "RH Acolhedor", lula: 49.5, flavio: 50.5, date: "16/10 14:10" }
+        ];
+
+        // MENSAGENS DIVERTIDAS DE SENHA ERRADA
+        const funnyLoginErrors = [
+            "🚨 Senha errada! Você é estagiário novo ou infiltrado da concorrência? 🕵️‍♂️",
+            "❌ Ops! Dica: A senha tem a ver com a nossa 'Tropa'...",
+            "🔒 Acesso negado! O Fator Voto disse que essa senha não passa na margem de erro!",
+            "🤔 Errou! Digite 'tropadoideia' direito pra não tomar advertência do RH!"
+        ];
+
+        function getFunnyDiagnosis(lulaPct) {
+            const lula = parseFloat(lulaPct);
+            if (lula > 70) {
+                return "🔥 Uau! Você prevê um tsunami vermelho no 2º turno! Já pode encomendar a picanha?";
+            } else if (lula > 54) {
+                return "🔴 Palpite com vitória confortável do Lula. O DataFolha corporativo anotou seu voto!";
+            } else if (lula >= 49 && lula <= 51) {
+                return "⚖️ É o famoso teste cardíaco! 50/50 na cabeça. Você confia na margem de erro ou só quer evitar brigas no grupo da empresa?";
+            } else if (lula >= 30 && lula < 49) {
+                return "🔵 Virada do Flávio Bolsonaro! Você aposta numa onda azul nos minutos finais de apuração.";
+            } else {
+                return "🚀 Lavada histórica do Flávio! Você acha que o PT nem pega o troféu de vice?";
+            }
+        }
+
+        function getStoredBets() {
+            const saved = localStorage.getItem('ideia_2026_bets');
+            if (saved) {
+                try {
+                    return JSON.parse(saved);
+                } catch(e) {
+                    return initialMockBets;
+                }
+            }
+            localStorage.setItem('ideia_2026_bets', JSON.stringify(initialMockBets));
+            return initialMockBets;
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('password-input');
+            const icon = document.getElementById('eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // LOGIN / VALIDAÇÃO DE SENHA
+        function handleLogin(e) {
+            e.preventDefault();
+            const passwordInput = document.getElementById('password-input').value.trim();
+            const errorDiv = document.getElementById('login-error');
+
+            if (passwordInput.toLowerCase() === 'tropadoideia') {
+                errorDiv.classList.add('hidden');
+                document.getElementById('screen-login').classList.add('hidden');
+                // Exibe a tela de escolha
+                document.getElementById('screen-choice').classList.remove('hidden');
+            } else {
+                const randomMsg = funnyLoginErrors[Math.floor(Math.random() * funnyLoginErrors.length)];
+                errorDiv.innerHTML = randomMsg;
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        function goToVoteScreen() {
+            document.getElementById('screen-choice').classList.add('hidden');
+            document.getElementById('screen-vote').classList.remove('hidden');
+            updateSliderValues(50);
+        }
+
+        function goToRankingScreen() {
+            document.getElementById('screen-choice').classList.add('hidden');
+            document.getElementById('screen-ranking').classList.remove('hidden');
+            renderRanking();
+        }
+
+        function backToChoice() {
+            document.getElementById('screen-vote').classList.add('hidden');
+            document.getElementById('screen-ranking').classList.add('hidden');
+            document.getElementById('screen-choice').classList.remove('hidden');
+        }
+
+        function updateSliderValues(val) {
+            const lula = parseFloat(val).toFixed(1);
+            const flavio = (100 - lula).toFixed(1);
+
+            document.getElementById('lula-percent-display').innerText = `${lula}%`;
+            document.getElementById('flavio-percent-display').innerText = `${flavio}%`;
+
+            document.getElementById('vote-slider').style.setProperty('--lula-pct', `${lula}%`);
+            document.getElementById('funny-diagnosis').innerText = `"${getFunnyDiagnosis(lula)}"`;
+        }
+
+        function handleBetSubmit(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('user-name').value.trim();
+            const lulaVal = parseFloat(document.getElementById('vote-slider').value);
+            const flavioVal = parseFloat((100 - lulaVal).toFixed(1));
+
+            if (!nameInput) return;
+
+            const newBet = {
+                name: nameInput,
+                lula: lulaVal,
+                flavio: flavioVal,
+                date: new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
+            };
+
+            const bets = getStoredBets();
+            bets.unshift(newBet);
+            localStorage.setItem('ideia_2026_bets', JSON.stringify(bets));
+
+            // Vai direto para o ranking após votar
+            document.getElementById('screen-vote').classList.add('hidden');
+            document.getElementById('screen-ranking').classList.remove('hidden');
+            renderRanking();
+        }
+
+        function renderRanking() {
+            const bets = getStoredBets();
+            if (bets.length === 0) return;
+
+            const totalLula = bets.reduce((acc, b) => acc + parseFloat(b.lula), 0);
+            const totalFlavio = bets.reduce((acc, b) => acc + parseFloat(b.flavio), 0);
+            const avgLula = (totalLula / bets.length).toFixed(1);
+            const avgFlavio = (totalFlavio / bets.length).toFixed(1);
+
+            document.getElementById('total-bets-count').innerText = bets.length;
+            document.getElementById('avg-lula').innerText = `${avgLula}%`;
+            document.getElementById('avg-flavio').innerText = `${avgFlavio}%`;
+
+            document.getElementById('avg-bar-lula').style.width = `${avgLula}%`;
+            document.getElementById('avg-bar-lula').innerText = `${avgLula}%`;
+            document.getElementById('avg-bar-flavio').style.width = `${avgFlavio}%`;
+            document.getElementById('avg-bar-flavio').innerText = `${avgFlavio}%`;
+
+            const tbody = document.getElementById('ranking-table-body');
+            tbody.innerHTML = '';
+
+            bets.forEach((bet) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition";
+
+                const isLulaWinner = bet.lula > bet.flavio;
+                const isTie = bet.lula === bet.flavio;
+                let badgeClass = isTie ? "bg-slate-500/20 text-slate-300 border-slate-500/30" : isLulaWinner ? "bg-red-500/20 text-red-400 border-red-500/30" : "bg-blue-500/20 text-blue-400 border-blue-500/30";
+                let badgeText = isTie ? "Empate" : isLulaWinner ? "Lula" : "Flávio";
+
+                tr.innerHTML = `
+                    <td class="p-3 font-semibold text-white flex flex-col">
+                        <span>${escapeHtml(bet.name)}</span>
+                        <span class="text-[10px] text-slate-500 font-normal">${bet.date || 'Recente'}</span>
+                    </td>
+                    <td class="p-3 text-center font-bold text-ideia-lula">${parseFloat(bet.lula).toFixed(1)}%</td>
+                    <td class="p-3 text-center font-bold text-ideia-flavio">${parseFloat(bet.flavio).toFixed(1)}%</td>
+                    <td class="p-3 text-right">
+                        <span class="px-2.5 py-1 rounded-full text-[10px] font-bold border ${badgeClass}">
+                            ${badgeText}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
