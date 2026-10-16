@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tropa do Ideia 2026</title>
+    <!-- Favicon Premium -->
+    <link rel="icon" type="image/png" href="favicon.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Montserrat -->
@@ -420,7 +422,6 @@
 
     <!-- LOGIC JAVASCRIPT -->
     <script>
-        // MENSAGENS DIVERTIDAS DE SENHA ERRADA
         const funnyLoginErrors = [
             "🚨 Senha errada! Você é estagiário novo ou infiltrado da concorrência? 🕵️‍♂️",
             "❌ Ops! Dica: A senha tem a ver com a nossa 'Tropa'...",
@@ -443,19 +444,13 @@
             }
         }
 
-        // CARREGAR APOSTAS DO LOCAL STORAGE OU LIMPAR CASO FOSSEM MOCK
         function getStoredBets() {
             const saved = localStorage.getItem('ideia_2026_bets');
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    // Filtra nomes falsos antigos caso ainda existam no cache do navegador
                     const fakeNames = ["Chefe do Cafezinho ☕", "Estagiário de Políticagem", "Analista Sênior do Excel", "Dev da Madrugada 💻", "RH Acolhedor"];
                     const cleanBets = parsed.filter(b => !fakeNames.includes(b.name));
-                    
-                    if (cleanBets.length !== parsed.length) {
-                        localStorage.setItem('ideia_2026_bets', JSON.stringify(cleanBets));
-                    }
                     return cleanBets;
                 } catch(e) {
                     return [];
@@ -478,7 +473,6 @@
             }
         }
 
-        // LOGIN / VALIDAÇÃO DE SENHA
         function handleLogin(e) {
             e.preventDefault();
             const passwordInput = document.getElementById('password-input').value.trim();
@@ -487,7 +481,6 @@
             if (passwordInput.toLowerCase() === 'tropadoideia') {
                 errorDiv.classList.add('hidden');
                 document.getElementById('screen-login').classList.add('hidden');
-                // Exibe a tela de escolha
                 document.getElementById('screen-choice').classList.remove('hidden');
             } else {
                 const randomMsg = funnyLoginErrors[Math.floor(Math.random() * funnyLoginErrors.length)];
@@ -544,7 +537,6 @@
             bets.unshift(newBet);
             localStorage.setItem('ideia_2026_bets', JSON.stringify(bets));
 
-            // Vai direto para o ranking após votar
             document.getElementById('screen-vote').classList.add('hidden');
             document.getElementById('screen-ranking').classList.remove('hidden');
             renderRanking();
