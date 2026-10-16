@@ -254,7 +254,7 @@
                         <input 
                             type="text" 
                             id="user-name" 
-                            placeholder="Ex: João do BI, Aninha do Marketing..." 
+                            placeholder="Ex: João, Aninha..." 
                             class="w-full bg-ideia-navy/80 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-ideia-cyan focus:ring-1 focus:ring-ideia-cyan transition"
                             required
                         >
@@ -420,14 +420,8 @@
 
     <!-- LOGIC JAVASCRIPT -->
     <script>
-        // MOCK INITIAL DATA
-        const initialMockBets = [
-            { name: "Chefe do Cafezinho ☕", lula: 52.5, flavio: 47.5, date: "16/10 10:15" },
-            { name: "Estagiário de Políticagem", lula: 48.0, flavio: 52.0, date: "16/10 11:30" },
-            { name: "Analista Sênior do Excel", lula: 50.8, flavio: 49.2, date: "16/10 12:05" },
-            { name: "Dev da Madrugada 💻", lula: 51.5, flavio: 48.5, date: "16/10 13:40" },
-            { name: "RH Acolhedor", lula: 49.5, flavio: 50.5, date: "16/10 14:10" }
-        ];
+        // ARRAY VAZIO PARA INICIAR SEM APOSTAS FALSAS
+        const initialMockBets = [];
 
         // MENSAGENS DIVERTIDAS DE SENHA ERRADA
         const funnyLoginErrors = [
@@ -553,7 +547,19 @@
 
         function renderRanking() {
             const bets = getStoredBets();
-            if (bets.length === 0) return;
+            const tbody = document.getElementById('ranking-table-body');
+
+            if (bets.length === 0) {
+                document.getElementById('total-bets-count').innerText = '0';
+                document.getElementById('avg-lula').innerText = '0%';
+                document.getElementById('avg-flavio').innerText = '0%';
+                document.getElementById('avg-bar-lula').style.width = '50%';
+                document.getElementById('avg-bar-lula').innerText = '';
+                document.getElementById('avg-bar-flavio').style.width = '50%';
+                document.getElementById('avg-bar-flavio').innerText = '';
+                tbody.innerHTML = '<tr><td colspan="4" class="p-6 text-center text-slate-500">Nenhum palpite registrado ainda. Seja o primeiro a apostar! 🗳️</td></tr>';
+                return;
+            }
 
             const totalLula = bets.reduce((acc, b) => acc + parseFloat(b.lula), 0);
             const totalFlavio = bets.reduce((acc, b) => acc + parseFloat(b.flavio), 0);
@@ -569,7 +575,6 @@
             document.getElementById('avg-bar-flavio').style.width = `${avgFlavio}%`;
             document.getElementById('avg-bar-flavio').innerText = `${avgFlavio}%`;
 
-            const tbody = document.getElementById('ranking-table-body');
             tbody.innerHTML = '';
 
             bets.forEach((bet) => {
