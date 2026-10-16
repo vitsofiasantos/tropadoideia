@@ -420,9 +420,6 @@
 
     <!-- LOGIC JAVASCRIPT -->
     <script>
-        // ARRAY VAZIO PARA INICIAR SEM APOSTAS FALSAS
-        const initialMockBets = [];
-
         // MENSAGENS DIVERTIDAS DE SENHA ERRADA
         const funnyLoginErrors = [
             "🚨 Senha errada! Você é estagiário novo ou infiltrado da concorrência? 🕵️‍♂️",
@@ -446,17 +443,25 @@
             }
         }
 
+        // CARREGAR APOSTAS DO LOCAL STORAGE OU LIMPAR CASO FOSSEM MOCK
         function getStoredBets() {
             const saved = localStorage.getItem('ideia_2026_bets');
             if (saved) {
                 try {
-                    return JSON.parse(saved);
+                    const parsed = JSON.parse(saved);
+                    // Filtra nomes falsos antigos caso ainda existam no cache do navegador
+                    const fakeNames = ["Chefe do Cafezinho ☕", "Estagiário de Políticagem", "Analista Sênior do Excel", "Dev da Madrugada 💻", "RH Acolhedor"];
+                    const cleanBets = parsed.filter(b => !fakeNames.includes(b.name));
+                    
+                    if (cleanBets.length !== parsed.length) {
+                        localStorage.setItem('ideia_2026_bets', JSON.stringify(cleanBets));
+                    }
+                    return cleanBets;
                 } catch(e) {
-                    return initialMockBets;
+                    return [];
                 }
             }
-            localStorage.setItem('ideia_2026_bets', JSON.stringify(initialMockBets));
-            return initialMockBets;
+            return [];
         }
 
         function togglePasswordVisibility() {
